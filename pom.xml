@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.pfg</groupId>
+  <artifactId>PFGAutomation</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>AppiumFramework</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+   <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <testng.version>7.7.1</testng.version>
+    <extentreports.version>5.1.1</extentreports.version>
+    <appium.version>8.5.1</appium.version>
+    <selenium.version>4.10.0</selenium.version>
+    <webdrivermanager.version>5.4.0</webdrivermanager.version>
+    <suiteXmlFile>src/test/resources/sanity-suite.xml</suiteXmlFile>
+</properties>
+
+    <dependencies>
+     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>${selenium.version}</version>
+</dependency>
+
+<!-- Selenium HTTP Client -->
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-http-jdk-client</artifactId>
+    <version>4.13.0</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.16.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.17.2</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+<dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>${extentreports.version}</version>
+</dependency>
+
+
+
+
+
+        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+<dependency>
+    <groupId>io.appium</groupId>
+    <artifactId>java-client</artifactId>
+    <version>${appium.version}</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+
+
+
+        
+
+        <dependency>
+            <groupId>com.mashape.unirest</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>1.4.9</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars.npm/xmlhttprequest-ssl -->
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>xmlhttprequest-ssl</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20211205</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Add SLF4J implementation -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- WebDriverManager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${project.basedir}/${suiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <webdriver.http.factory>jdk-http-client</webdriver.http.factory>
+                        <LT_USERNAME>${LT_USERNAME}</LT_USERNAME>
+                        <LT_ACCESS_KEY>${LT_ACCESS_KEY}</LT_ACCESS_KEY>
+                        <LT_APP_ID>${LT_APP_ID}</LT_APP_ID>
+                        <BUILD_NAME>${BUILD_NAME}</BUILD_NAME>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <!-- Default profile -->
+        <profile>
+            <id>default</id>
+            <properties>
+                <test.suite.file>src/test/resources/sanity-suite.xml</test.suite.file>
+            </properties>
+        </profile>
+        
+        <!-- Android Single Device Tests -->
+        <profile>
+            <id>android-single</id>
+            <properties>
+                <test.suite.file>src/test/java/org/RunFiles/android-single.xml</test.suite.file>
+            </properties>
+        </profile>
+
+        <!-- Multi Device Sequential Tests -->
+        <profile>
+            <id>multi-device</id>
+            <properties>
+                <test.suite.file>src/test/java/org/RunFiles/multi-device-sequential.xml</test.suite.file>
+            </properties>
+        </profile>
+
+        <!-- Sanity Tests -->
+        <profile>
+            <id>sanity</id>
+            <properties>
+                <test.suite.file>src/test/resources/sanity-suite.xml</test.suite.file>
+            </properties>
+        </profile>
+
+        <!-- Comprehensive Sanity Tests -->
+        <profile>
+            <id>comprehensive-sanity</id>
+            <properties>
+                <test.suite.file>src/test/resources/comprehensive-sanity-suite.xml</test.suite.file>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>

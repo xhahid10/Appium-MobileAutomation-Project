@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Mobile" parallel="tests" thread-count="1">
+    <!-- Configure Listeners -->
+    <listeners>
+        <listener class-name="org.fg.utils.Listeners"/>
+    </listeners>
+    
+    <test name="Android_Deposit_Money_Test">
+        <parameter name="deviceName" value="Galaxy S23" />
+        <parameter name="platformVersion" value="13" />
+        <parameter name="platformName" value="Android" />
+        <classes>
+            <class name="org.pfg.DepositMoneyTest">
+                <methods>
+                    <include name="testDepositMoney"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite> 

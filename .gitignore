@@ -1,0 +1,193 @@
+# =============================================================================
+# GIT IGNORE FILE FOR PFG AUTOMATION PROJECT
+# =============================================================================
+
+# =============================================================================
+# SENSITIVE CONFIGURATION FILES
+# =============================================================================
+# Never commit sensitive configuration files
+src/main/java/org/fg/resources/environments/local.properties
+src/main/java/org/fg/resources/environments/remote.properties
+src/main/java/org/fg/resources/environments/ci.properties
+src/main/java/org/fg/resources/config.properties
+
+# Environment-specific configuration templates (keep these)
+!src/main/java/org/fg/resources/environments/*.template.properties
+
+# =============================================================================
+# BUILD AND DEPENDENCY FILES
+# =============================================================================
+target/
+build/
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+pom.xml.bak
+
+# Gradle
+.gradle/
+gradlew
+gradlew.bat
+
+# =============================================================================
+# IDE AND EDITOR FILES
+# =============================================================================
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Eclipse
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# =============================================================================
+# TEST OUTPUT AND REPORTS
+# =============================================================================
+test-output/
+reports/
+screenshots/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+
+# ExtentReports
+extent-reports/
+test-results/
+
+# TestNG
+testng-results.xml
+testng-failed.xml
+testng.xml.bak
+
+# =============================================================================
+# LOG FILES
+# =============================================================================
+*.log
+logs/
+log/
+
+# Application logs
+app.log
+error.log
+debug.log
+info.log
+
+# =============================================================================
+# TEMPORARY FILES
+# =============================================================================
+temp/
+tmp/
+.tmp/
+*.tmp
+*.temp
+
+# =============================================================================
+# OS GENERATED FILES
+# =============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# =============================================================================
+# SECURITY AND CREDENTIALS
+# =============================================================================
+# Never commit any files containing credentials
+*credentials*
+*password*
+*secret*
+*key*
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+
+# =============================================================================
+# BACKUP FILES
+# =============================================================================
+*.bak
+*.backup
+*.old
+*.orig
+*.save
+
+# =============================================================================
+# SPECIFIC PROJECT FILES
+# =============================================================================
+# Appium
+appium.log
+appium-server.log
+
+# LambdaTest
+lambdatest.log
+lambdatest-results/
+
+# Mobile app files
+*.apk
+*.ipa
+*.aab
+
+# =============================================================================
+# ENVIRONMENT FILES
+# =============================================================================
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+
+# =============================================================================
+# CI/CD FILES
+# =============================================================================
+# Jenkins
+.jenkins/
+jenkins.log
+
+# GitHub Actions
+.github/workflows/*.yml.bak
+
+# =============================================================================
+# DOCUMENTATION BACKUPS
+# =============================================================================
+*.md.bak
+*.txt.bak
+documentation/backup/

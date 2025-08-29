@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="PFG Sanity Test Suite" verbose="2" parallel="false" thread-count="1">
+    
+    <test name="PFG Complete Sanity Test" preserve-order="true">
+        <parameter name="platformName" value="android"/>
+        <parameter name="deviceName" value="Galaxy S23"/>
+        <parameter name="platformVersion" value="13.0"/>
+        
+        <classes>
+            <class name="org.pfg.LoginLogoutFlow">
+                <methods>
+                    <include name="testLoginToLogoutFlow"/>
+                </methods>
+            </class>
+            <class name="org.pfg.DepositMoneyTest">
+                <methods>
+                    <include name="testDepositMoney"/>
+                </methods>
+            </class>
+            <class name="org.pfg.WithdrawMoneyTest">
+                <methods>
+                    <include name="testWithdrawMoney"/>
+                    <include name="testWithdrawMoneyBankTransfer"/>
+                    <include name="testWithdrawMoneyUPITransfer"/>
+                </methods>
+            </class>
+            <class name="org.pfg.HamburgerMenuNavigationTest">
+                <methods>
+                    <include name="testHamburgerMenuNavigation"/>
+                </methods>
+            </class>
+            <class name="org.pfg.DeepLinkNavigationTest">
+                <methods>
+                    <include name="testDeepLinkToLudoGame"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+</suite> 
